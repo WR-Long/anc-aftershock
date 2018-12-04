@@ -11,6 +11,24 @@ import matplotlib.pyplot as plt
 import datetime
 import boto3
 
+def colors(intensity):
+    c = pd.DataFrame(intensity)
+    c = c.round()
+    c = c.fillna('#FFFFFF')
+    c[c == 0] = '#FFFFFF'
+    c[c == 1] = '#FFFFFF'
+    c[c == 2] = '#BFCCFF'
+    c[c == 3] = '#A0E6FF'
+    c[c == 4] = '#80FFFF'
+    c[c == 5] = '#7AFF93'
+    c[c == 6] = '#7AFF00'
+    c[c == 7] = '#FFC800'
+    c[c == 8] = '#FF9100'
+    c[c == 9] = '#FF0000'
+    c[c == 10] = '#D20000'
+    c = pd.Series(c.iloc[:,0])
+    return c
+
 #Retrieve GeoJSON from USGS (M 1.0+, Past 7 Days)
 url='https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson'
 df = pd.read_json(url, typ='table')
@@ -32,9 +50,14 @@ tot = str(df.shape[0])
 fig = plt.figure()
 fig.set_size_inches(16*.75, 9*.75)
 ax = fig.add_subplot(111)
+c = colors(df['properties.mmi'])
+c = c.ravel()
 ax.scatter(df['properties.time'].values,
            df['properties.mag'],
-           df['properties.mag']**3)
+           df['properties.mag']**3,
+           c,
+           linewidths=0.5,
+           edgecolors='k')
 tot = tot + ' total earthquakes in the last 7 days'
 ax.annotate(tot,
             xy=(0.8, 0.9), xycoords='axes fraction',
