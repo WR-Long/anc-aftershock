@@ -87,7 +87,7 @@ plt.savefig(now)
 s3 = boto3.resource('s3')
 data = open('anc_aftershock.png', 'rb')
 s3.Bucket('anc-aftershock').put_object(Key='anc_aftershock.png', Body=data,
-          ACL='public-read', ContentType='image/png')
+          ACL='public-read', ContentType='image/png', CacheControl='max-age=300')
 data = open(now, 'rb')
 s3.Bucket('anc-aftershock').put_object(Key=now, Body=data,
           ACL='public-read', ContentType='image/png')
