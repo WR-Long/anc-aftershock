@@ -76,7 +76,7 @@ ax.get_yaxis().set_minor_formatter(plt.FuncFormatter(
 ax.get_yaxis().set_major_formatter(plt.FuncFormatter(
     lambda x, loc: "{:,}".format(int(x))))
 ax.grid(True, which='both')
-ax.text(-0.05, -0.15, ('Data: earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php\n' +
+ax.text(-0.05, -0.13, ('Data: earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php\n' +
                    'Plot: optimalicity.com/p/anc-aftershock.html'),
         fontsize=10, ha='left', va='bottom', color='.5', transform=ax.transAxes)
 plt.savefig('anc_aftershock.png')
