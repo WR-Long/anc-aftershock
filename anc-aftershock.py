@@ -29,7 +29,7 @@ def colors(intensity):
     c = pd.Series(c.iloc[:,0])
     return c
 
-#Retrieve GeoJSON from USGS (M 1.0+, Past 7 Days)
+#Retrieve GeoJSON from USGS (All, Past 7 Days)
 url='https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson'
 df = pd.read_json(url, typ='table')
 #Keep only features
