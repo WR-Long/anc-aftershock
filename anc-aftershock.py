@@ -66,7 +66,7 @@ ax.annotate(tot,
 ax.set_title('Earthquakes within 100 Miles of Anchorage, Alaska', fontsize=20)
 ax.set_xlabel('Time (AKST)')
 ax.set_xlim(np.datetime64('2018-11-30T07:00'),
-            np.datetime64('2018-12-06T07:00'))
+            np.datetime64('2018-12-07T07:00'))
 ax.set_ylabel('Magnitude')
 ax.set_yscale('log')
 ax.set_ylim(1,8)
